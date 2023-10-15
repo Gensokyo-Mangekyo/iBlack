@@ -45,14 +45,13 @@
        
         </StackPanel>
         <StackPanel>
-            <TextBlock Margin="0,25,0,0"  HorizontalAlignment="Center" FontSize="30px" Foreground="White" FontWeight="ExtraBold">Авторизация</TextBlock>
+            <TextBlock Margin="0,15,0,0"  HorizontalAlignment="Center" FontSize="30px" Foreground="White" FontWeight="ExtraBold">Авторизация</TextBlock>
         <TextBlock Margin="211,15,466,0" HorizontalAlignment="Stretch" FontSize="25px" Foreground="White" FontWeight="ExtraBold" Width="115" MaxWidth="400"><Run Text="Логин"/></TextBlock>
             <TextBox BorderBrush="White"  FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="DarkGray" Margin="232,15,268,0" Height="25" ></TextBox>
         <TextBlock Margin="212,15,454,0" HorizontalAlignment="Stretch" FontSize="25px" Foreground="White" FontWeight="ExtraBold" Width="128"  MaxWidth="400">Пароль</TextBlock>
             <PasswordBox BorderBrush="White" BorderThickness="2" Background="DarkGray" Margin="232,15,268,0" Height="25"/>
-            <Button Width="150px" Background="Black" BorderBrush="White" BorderThickness="2"  Foreground="White" Margin="306,25,336,0" Content="Войти" FontSize="20px" FontWeight="Heavy" Height="33">
+            <Button Width="150px" Background="Black" BorderBrush="White" BorderThickness="2" Click="Button_Click_1"  Foreground="White" Margin="306,25,336,0" Content="Войти" FontSize="20px" FontWeight="Heavy" Height="33">
             </Button>
-        
         </StackPanel>
     </StackPanel>
 </Window>
