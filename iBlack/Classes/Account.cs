@@ -49,7 +49,15 @@ namespace iBlack.Classes
             this.Family = Family;
             this.Name = Name;
             post = Post;
-            //NamePost = ArrayStringPosts[(int)Post];
+            ReceiptDateTime = date;
+        }
+
+        public Account(int Id, string Name, string Family, string  NamePost, DateTime date)
+        {
+            this.Id = Id;
+            this.Family = Family;
+            this.Name = Name;
+            this.NamePost = NamePost;
             ReceiptDateTime = date;
         }
     }

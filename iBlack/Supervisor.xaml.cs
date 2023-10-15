@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -20,23 +21,11 @@ namespace iBlack
     /// </summary>
     public partial class Supervisor : Window
     {
-
-      public  List<Account> accounts = new List<Account>
+      public  ObservableCollection<Account> accounts = new ObservableCollection<Account>
 {
-    new Account(1,"Андрей","Мирошниченко",Enums.Post.Engineer, DateTime.Parse("1 августа 2023г")),
-    new Account(2,"Михаил","Усиков",Enums.Post.Supervisor,DateTime.Parse("6 июля 2023г")) ,
-    new Account(2,"Максим","Кружевников",Enums.Post.Supervisor,DateTime.Parse("1 августа 2023г")) ,
-    new Account(4,"5","6",Enums.Post.Technic,DateTime.Now),
-    new Account(5,"5","6",Enums.Post.Technic,DateTime.Now),
-    new Account(6,"5","6",Enums.Post.Technic,DateTime.Now),
-     new Account(7,"5","6",Enums.Post.Technic,DateTime.Now),
-       new Account(8,"5","6",Enums.Post.Technic,DateTime.Now),
-        new Account(9,"5","6",Enums.Post.Technic,DateTime.Now),
-          new Account(10,"5","6",Enums.Post.Technic,DateTime.Now),
-            new Account(11,"5","6",Enums.Post.Technic,DateTime.Now),
-                   new Account(12,"5","6",Enums.Post.Technic,DateTime.Now),
-                      new Account(13,"5","6",Enums.Post.Technic,DateTime.Now),
-                       new Account(13,"8","6",Enums.Post.Technic,DateTime.Now),
+    new Account(1,"Егор","Дуранов",Enums.Post.Engineer, DateTime.Parse("1 августа 2023г")),
+    new Account(2,"Михаил","Усиков",Enums.Post.Supervisor,DateTime.Parse("6 июля 2021г")) ,
+    new Account(2,"Максим","Кружевников",Enums.Post.Technic,DateTime.Parse("5 августа 2022г")) ,
 };
 
 
@@ -52,22 +41,21 @@ namespace iBlack
             Close();
         }
 
+        List<string> StandartText = new List<string>()
+        {
+            "Поиск по имени",
+            "Поиск по фамилии",
+            "Поиск по дате",
+            "Имя",
+            "Фамилия",
+            "Дата поступления",
+            "Логин",
+        };
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (name.Text == "Поиск по имени")
-                name.Text = "";
-        }
-
-        private void family_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (family.Text == "Поиск по фамилии")
-                family.Text = "";
-        }
-
-        private void Date_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (Date.Text == "Поиск по дате")
-                Date.Text = "";
+            TextBox textBox = (TextBox)sender;
+            if (StandartText.Contains(textBox.Text))
+                textBox.Text = "";
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -105,6 +93,49 @@ namespace iBlack
             post.Text = "";
             Date.Text = "Поиск по дате";
             AccountsGrid.ItemsSource = accounts;
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            string[] Fields = new string[6]
+            {
+                AddName.Text,
+                AddFamiliy.Text,
+                AddPost.Text,
+                AddDate.Text,
+                Login.Text,
+                Password.Password,
+            };
+            foreach (var item in Fields)
+            {
+                if (string.IsNullOrWhiteSpace(item) || item == "")
+                {
+                    MessageBox.Show("Одно из полей является пустым", "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+            DateTime date = new DateTime();
+            if (!DateTime.TryParse(AddDate.Text,out date))
+            {
+                MessageBox.Show("Неверный формат даты", "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            accounts.Add(new Account(99,AddName.Text,AddFamiliy.Text,AddPost.Text,date));
+            MessageBox.Show("Новый сотрудник успешно добавлен", "Успешно");
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            int index =  AccountsGrid.SelectedIndex;
+            if (accounts[index].NamePost == "Руководитель")
+            {
+                var Password = new Password();
+               bool? Result = Password.ShowDialog();
+                if (Result.GetValueOrDefault())
+                        accounts.Remove(accounts[index]);
+            }
+            else accounts.Remove(accounts[index]);
+
         }
     }
 }

@@ -44,7 +44,7 @@
             </Grid>
             <StackPanel>
                 <TextBlock Margin="0,15,0,0"  HorizontalAlignment="Center" FontSize="35px" Foreground="White" FontWeight="ExtraBold">Добро пожаловать</TextBlock>
-                <TextBlock Margin="0,15,0,0"  HorizontalAlignment="Center" FontSize="25px" Foreground="White" FontWeight="ExtraBold">Андрей Мирошниченко</TextBlock>
+                <TextBlock Margin="0,15,0,0"  HorizontalAlignment="Center" FontSize="25px" Foreground="White" FontWeight="ExtraBold">DUN LunarTick</TextBlock>
                 <Grid  >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -56,7 +56,7 @@
                     </Grid.RowDefinitions>
 
                         <TextBlock Grid.Column="0" Margin="0,15,0,0"  HorizontalAlignment="Center" FontSize="35px" Foreground="White" FontWeight="ExtraBold">Сотрудники</TextBlock>
-                    <DataGrid  CanUserAddRows="True"  CanUserDeleteRows="True" HorizontalGridLinesBrush="DarkGray" RowBackground="Snow"  Grid.Column="0" Grid.Row="1" Margin="0,5,0,0" x:Name="AccountsGrid" AutoGenerateColumns="False"  ItemsSource="{DynamicResource ResourceKey=accounts}">
+                    <DataGrid CanUserAddRows="False"  HorizontalGridLinesBrush="DarkGray" RowBackground="Snow"  Grid.Column="0" Grid.Row="1" Margin="0,5,0,0" x:Name="AccountsGrid" AutoGenerateColumns="False"  ItemsSource="{Binding accounts}">
                         <DataGrid.Resources>
                             <col:ArrayList x:Key="accounts">
 
@@ -73,7 +73,7 @@
                     <StackPanel Grid.Column="1" Grid.Row="1">
                         <StackPanel  Orientation="Horizontal">
                             <TextBox x:Name="name" GotFocus="TextBox_GotFocus" BorderBrush="White" Grid.Column="1" Grid.Row="1"  FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="15,5,0,0"  Width="300px" Height="25" >Поиск по имени</TextBox>
-                            <TextBox x:Name="family" GotFocus="family_GotFocus" BorderBrush="White" Grid.Column="1" Grid.Row="1" FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="25,5,0,0"  Width="300px" Height="25" >Поиск по фамилии</TextBox>
+                            <TextBox x:Name="family" GotFocus="TextBox_GotFocus" BorderBrush="White" Grid.Column="1" Grid.Row="1" FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="15,5,0,0"  Width="300px" Height="25" >Поиск по фамилии</TextBox>
                         </StackPanel>
                         <StackPanel Margin="15,15,0,0"  Orientation="Horizontal">
                             <ComboBox x:Name="post"  Grid.Column="1" Grid.Row="1"  FontSize="15" Foreground="White" Background="Black" FontWeight="ExtraBold" BorderThickness="2"   Width="300px" Height="25" >
@@ -87,13 +87,42 @@
                                 <ComboBoxItem Content="Инженер"/>
                                 <ComboBoxItem Content="Техник"/>
                             </ComboBox>
-                            <TextBox GotFocus="Date_GotFocus" x:Name="Date" BorderBrush="White" Grid.Column="1" Grid.Row="1" FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="25,0,0,0"  Width="300px" Height="25" >Поиск по дате</TextBox>
+                            <TextBox GotFocus="TextBox_GotFocus" x:Name="Date" BorderBrush="White" Grid.Column="1" Grid.Row="1" FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="15,0,0,0"  Width="300px" Height="25" >Поиск по дате</TextBox>
                         </StackPanel>
                         <StackPanel  Margin="0,20,0,0" Orientation="Horizontal"  HorizontalAlignment="Center">
-                            <Button Width="150px" Background="Black" Click="Button_Click_1" BorderBrush="White"  BorderThickness="2" Foreground="White" Content="Найти" FontSize="20px" FontWeight="Heavy" Height="33"/>
-                            <Button Width="150px" Margin="35,0,0,0" Background="Black" Click="Button_Click_2" BorderBrush="White"  BorderThickness="2"  Foreground="White" Content="Сбросить" FontSize="20px" FontWeight="Heavy" Height="33"/>
+                            <Button Width="150px" Margin="5,0,0,0" Background="Black" Click="Button_Click_1" BorderBrush="White"  BorderThickness="2" Foreground="White" Content="Найти" FontSize="20px" FontWeight="Heavy" Height="33"/>
+                            <Button Width="150px" Margin="20,0,0,0" Background="Black" Click="Button_Click_2" BorderBrush="White"  BorderThickness="2"  Foreground="White" Content="Сбросить" FontSize="20px" FontWeight="Heavy" Height="33"/>
                         </StackPanel>
-                       
+                        <TextBlock Grid.Column="1" Margin="0,10,0,0" Padding="0,5"  HorizontalAlignment="Center" FontSize="25px" Foreground="White" FontWeight="ExtraBold">Добавление</TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox  x:Name="AddName" Text="Имя" GotFocus="TextBox_GotFocus" BorderBrush="White" Grid.Column="1" Grid.Row="1"  FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="15,5,0,0"  Width="300px" Height="25" ></TextBox>
+                            <TextBox x:Name="AddFamiliy" Text="Фамилия" GotFocus="TextBox_GotFocus" BorderBrush="White" Grid.Column="1" Grid.Row="1"  FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="15,5,0,0"  Width="300px" Height="25" ></TextBox>
+                        </StackPanel>
+                        <StackPanel Margin="15,20,0,0" Orientation="Horizontal">
+                            <ComboBox x:Name="AddPost"  Grid.Column="1" Grid.Row="1"  FontSize="15" Foreground="White" Background="Black" FontWeight="ExtraBold" BorderThickness="2"   Width="300px" Height="25" >
+                                <ComboBox.ItemContainerStyle>
+                                    <Style TargetType="ComboBoxItem">
+                                        <Setter Property="Background" Value="Black"/>
+                                        <Setter Property="BorderBrush" Value="Black"/>
+                                    </Style>
+                                </ComboBox.ItemContainerStyle>
+                                <ComboBoxItem Content="Руководитель"/>
+                                <ComboBoxItem Content="Инженер"/>
+                                <ComboBoxItem Content="Техник"/>
+                            </ComboBox>
+                            <TextBox  GotFocus="TextBox_GotFocus"  Text="Дата поступления"  x:Name="AddDate" BorderBrush="White" Grid.Column="1" Grid.Row="1" FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="15,0,0,0"  Width="300px" Height="25" ></TextBox>
+                        </StackPanel>
+                        <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
+                            <TextBox GotFocus="TextBox_GotFocus"  Text="Логин"  x:Name="Login" BorderBrush="White" Grid.Column="1" Grid.Row="1" FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="15,0,0,0"  Width="300px" Height="25" ></TextBox>
+                            <PasswordBox  x:Name="Password" BorderBrush="White" Grid.Column="1" Grid.Row="1" FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="15,0,0,0"  Width="300px" Height="25" ></PasswordBox>
+                        </StackPanel>
+                        <StackPanel  Margin="0,20,0,0" Orientation="Horizontal"  HorizontalAlignment="Center">
+                            <Button Width="150px" Click="Button_Click_3"  Margin="5,0,0,0" Background="Black"  BorderBrush="White"  BorderThickness="2" Foreground="White" Content="Добавить" FontSize="20px" FontWeight="Heavy" Height="33"/>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" Orientation="Horizontal">
+                            <Button Click="Button_Click_4" Width="150px"  Margin="5,0,0,0" Background="Black"  BorderBrush="White"  BorderThickness="2" Foreground="White" Content="Удалить" FontSize="20px" FontWeight="Heavy" Height="33"/>
+                            <Button Width="150px"  Margin="15,0,0,0" Background="Black"  BorderBrush="White"  BorderThickness="2" Foreground="White" Content="Сохранить" FontSize="20px" FontWeight="Heavy" Height="33"/>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
             </StackPanel>
