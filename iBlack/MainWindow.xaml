@@ -25,7 +25,7 @@
                 </Grid.ColumnDefinitions>
                 <Image Grid.Column="1" Grid.Row="1" Width="15px" HorizontalAlignment="Left"  Source="yinyang.png" Height="15px"></Image>
                 <TextBlock Grid.Row="1" Margin="15,3,0,0" FontStyle="Italic" FontWeight="Bold" Foreground="White">Авторизация</TextBlock>
-                <Button Grid.Column="1" Background="Transparent" BorderBrush="Transparent" Click="Button_Click" HorizontalAlignment="Right" Foreground="Red" FontWeight="ExtraBold" FontSize="15px"
+                <Button Grid.Column="1" Click="Button_Click" Background="Transparent" BorderBrush="Transparent"  HorizontalAlignment="Right" Foreground="Red" FontWeight="ExtraBold" FontSize="15px"
                 Content="X">
                     <Button.Style>
                         <Style TargetType="Button">

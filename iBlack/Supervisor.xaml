@@ -69,27 +69,32 @@
                             <DataGridHyperlinkColumn Header="Дата поступления" Binding="{Binding Path=ReceiptDate}" Width="170" />
                         </DataGrid.Columns>
                     </DataGrid>
-         
-                        <TextBlock Grid.Column="1" Margin="0,5,0,0"  HorizontalAlignment="Center" FontSize="25px" Foreground="White" FontWeight="ExtraBold">Поиск</TextBlock>
-                    <StackPanel Margin="0,-470px,0,0" Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
-                        <TextBox BorderBrush="White" Grid.Column="1" Grid.Row="1"  FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="15,5,0,0"  Width="300px" Height="25" >Поиск по имени</TextBox>
-                        <TextBox BorderBrush="White" Grid.Column="1" Grid.Row="1" FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="25,5,0,0"  Width="300px" Height="25" >Поиск по фамилии</TextBox>
+                    <TextBlock Grid.Column="1" Margin="0,5,0,0"  HorizontalAlignment="Center" FontSize="25px" Foreground="White" FontWeight="ExtraBold">Поиск</TextBlock>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <StackPanel  Orientation="Horizontal">
+                            <TextBox x:Name="name" GotFocus="TextBox_GotFocus" BorderBrush="White" Grid.Column="1" Grid.Row="1"  FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="15,5,0,0"  Width="300px" Height="25" >Поиск по имени</TextBox>
+                            <TextBox x:Name="family" GotFocus="family_GotFocus" BorderBrush="White" Grid.Column="1" Grid.Row="1" FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="25,5,0,0"  Width="300px" Height="25" >Поиск по фамилии</TextBox>
+                        </StackPanel>
+                        <StackPanel Margin="15,15,0,0"  Orientation="Horizontal">
+                            <ComboBox x:Name="post"  Grid.Column="1" Grid.Row="1"  FontSize="15" Foreground="White" Background="Black" FontWeight="ExtraBold" BorderThickness="2"   Width="300px" Height="25" >
+                                <ComboBox.ItemContainerStyle>
+                                    <Style TargetType="ComboBoxItem">
+                                        <Setter Property="Background" Value="Black"/>
+                                        <Setter Property="BorderBrush" Value="Black"/>
+                                    </Style>
+                                </ComboBox.ItemContainerStyle>
+                                <ComboBoxItem Content="Руководитель"/>
+                                <ComboBoxItem Content="Инженер"/>
+                                <ComboBoxItem Content="Техник"/>
+                            </ComboBox>
+                            <TextBox GotFocus="Date_GotFocus" x:Name="Date" BorderBrush="White" Grid.Column="1" Grid.Row="1" FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="25,0,0,0"  Width="300px" Height="25" >Поиск по дате</TextBox>
+                        </StackPanel>
+                        <StackPanel  Margin="0,20,0,0" Orientation="Horizontal"  HorizontalAlignment="Center">
+                            <Button Width="150px" Background="Black" Click="Button_Click_1" BorderBrush="White"  BorderThickness="2" Foreground="White" Content="Найти" FontSize="20px" FontWeight="Heavy" Height="33"/>
+                            <Button Width="150px" Margin="35,0,0,0" Background="Black" Click="Button_Click_2" BorderBrush="White"  BorderThickness="2"  Foreground="White" Content="Сбросить" FontSize="20px" FontWeight="Heavy" Height="33"/>
+                        </StackPanel>
+                       
                     </StackPanel>
-                    <StackPanel Margin="0,-400px,0,0" Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
-                        <ComboBox  Grid.Column="1" Grid.Row="1"  FontSize="15" Foreground="White" Background="Black" FontWeight="ExtraBold" BorderThickness="2" Margin="15,5,0,0"  Width="300px" Height="25" >
-                            <ComboBox.ItemContainerStyle>
-                                <Style TargetType="ComboBoxItem">
-                                    <Setter Property="Background" Value="Black"/>
-                                    <Setter Property="BorderBrush" Value="Black"/>
-                                </Style>
-                            </ComboBox.ItemContainerStyle>
-                            <ComboBoxItem Content="Руководитель"/>
-                            <ComboBoxItem Content="Инженер"/>
-                            <ComboBoxItem Content="Техник"/>
-                        </ComboBox>
-                        <TextBox BorderBrush="White" Grid.Column="1" Grid.Row="1" FontSize="15" Foreground="White" FontWeight="ExtraBold" BorderThickness="2" Background="Black" Margin="25,5,0,0"  Width="300px" Height="25" >Поиск по дате</TextBox>
-                    </StackPanel>
-                    
                 </Grid>
             </StackPanel>
         </StackPanel>

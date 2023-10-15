@@ -38,6 +38,11 @@ namespace iBlack.Classes
             } }
 
 
+        public Account()
+        {
+
+        }
+
         public Account(int Id,string Name,string Family, Post Post,DateTime date)
         {
             this.Id = Id;
