@@ -25,8 +25,9 @@ namespace iBlack
 {
     new Account(1,"Егор","Дуранов",Enums.Post.Engineer, DateTime.Parse("1 августа 2023г")),
     new Account(2,"Михаил","Усиков",Enums.Post.Supervisor,DateTime.Parse("6 июля 2021г")) ,
-    new Account(2,"Максим","Кружевников",Enums.Post.Technic,DateTime.Parse("5 августа 2022г")) ,
+    new Account(3,"Максим","Кружевников",Enums.Post.Technic,DateTime.Parse("5 августа 2022г")) ,
 };
+        private ObservableCollection<Account> EmployesTable = new ObservableCollection<Account>();
 
 
 
@@ -114,10 +115,22 @@ namespace iBlack
                     return;
                 }
             }
+            if (AddPost.Text == "Руководитель")
+            {
+                var Password = new Password("Supervisor", "qwerty");
+                bool? Result = Password.ShowDialog();
+                if (!Result.GetValueOrDefault())
+                    return;
+            }
             DateTime date = new DateTime();
             if (!DateTime.TryParse(AddDate.Text,out date))
             {
                 MessageBox.Show("Неверный формат даты", "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (accounts.Any(x => x.Login == Login.Text))
+            {
+                MessageBox.Show("Такой логин уже существует", "Ошибка данных", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             accounts.Add(new Account(99,AddName.Text,AddFamiliy.Text,AddPost.Text,date));
@@ -129,13 +142,30 @@ namespace iBlack
             int index =  AccountsGrid.SelectedIndex;
             if (accounts[index].NamePost == "Руководитель")
             {
-                var Password = new Password();
+                var Password = new Password(accounts[index].Login, accounts[index].Password);
                bool? Result = Password.ShowDialog();
                 if (Result.GetValueOrDefault())
                         accounts.Remove(accounts[index]);
             }
             else accounts.Remove(accounts[index]);
 
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            foreach (var cellInfo in AccountsGrid.SelectedItems)
+            {
+                if (cellInfo is Account account)
+                {
+                    EmployesTable.Add(account);
+                }
+            }
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            var Form = new EmployTable(EmployesTable);
+            Form.ShowDialog();
         }
     }
 }

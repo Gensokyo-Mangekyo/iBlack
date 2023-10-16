@@ -7,9 +7,13 @@ namespace iBlack.Classes
 {
     public class Account
     {
-        public int Id { get; private set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public string Login { get; private set; }
+
+        public string Password { get; private set; }
 
         public string Family { get; set; }
 
@@ -23,6 +27,13 @@ namespace iBlack.Classes
                     int index = Array.IndexOf(ArrayStringPosts, value);
                     if (Enum.IsDefined(typeof(Post), index))
                     {
+                        if (post == Post.Supervisor)
+                        {
+                            var Password = new Password("Supervisor", "qwerty");
+                            bool? Result = Password.ShowDialog();
+                            if (!Result.GetValueOrDefault())
+                                return;
+                        }
                         post = (Post)index;
                     }
                 }
@@ -50,6 +61,8 @@ namespace iBlack.Classes
             this.Name = Name;
             post = Post;
             ReceiptDateTime = date;
+            Login = "Andr";
+            Password = "123";
         }
 
         public Account(int Id, string Name, string Family, string  NamePost, DateTime date)
@@ -59,6 +72,8 @@ namespace iBlack.Classes
             this.Name = Name;
             this.NamePost = NamePost;
             ReceiptDateTime = date;
+            Login = "Andr";
+            Password = "123";
         }
     }
 

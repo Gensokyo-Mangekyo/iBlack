@@ -56,6 +56,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Account.cs" />
+    <Compile Include="EmployTable.xaml.cs">
+      <DependentUpon>EmployTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Enums\Post.cs" />
     <Compile Include="Password.xaml.cs">
       <DependentUpon>Password.xaml</DependentUpon>
@@ -63,6 +66,10 @@
     <Compile Include="Supervisor.xaml.cs">
       <DependentUpon>Supervisor.xaml</DependentUpon>
     </Compile>
+    <Page Include="EmployTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
