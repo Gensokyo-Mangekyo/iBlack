@@ -4,15 +4,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace iBlack
 {
@@ -51,6 +46,37 @@ namespace iBlack
             {
                 accounts.Remove(accounts.First(x => x.Id == id));
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
+            saveFileDialog.Filter = "Excel таблица (*.csv)|*.csv"; // Указание фильтра для типов файлов
+
+            bool? result = saveFileDialog.ShowDialog(); // Открыть диалоговое окно
+
+            if (result == true)
+            {
+                using (var StreamWriter = new StreamWriter(new FileStream(saveFileDialog.FileName, FileMode.Create), Encoding.UTF8))
+                {
+                    for (int i = 0; i < accounts.Count; i++)
+                    {
+                        var Builder = new StringBuilder();
+                        Builder.Append(accounts[i].Name);
+                        Builder.Append(";");
+                        Builder.Append(accounts[i].Family);
+                        Builder.Append(";");
+                        Builder.Append(accounts[i].NamePost);
+                        Builder.Append(";");
+                        Builder.Append(accounts[i].ReceiptDate);
+                        Builder.Append(";");
+                        StreamWriter.WriteLine(Builder.ToString());
+                    }
+                }
+            }
+
+           
+
         }
     }
 }

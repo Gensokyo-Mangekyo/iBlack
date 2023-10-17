@@ -31,7 +31,7 @@
         </DataGrid>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Width="200px" Click="Button_Click" Background="Black"  Margin="-15,0,0,0" BorderBrush="White"  BorderThickness="2" Foreground="White" Content="Убрать" FontSize="20px" FontWeight="Heavy" Height="37"/>
-            <Button Width="200px" Grid.Row="1" Margin="15,0,0,0" Background="Black"  BorderBrush="White"  BorderThickness="2" Foreground="White" Content="Создать отчёт" FontSize="20px" FontWeight="Heavy" Height="37"/>
+            <Button Click="Button_Click_1" Width="200px" Grid.Row="1" Margin="15,0,0,0" Background="Black"  BorderBrush="White"  BorderThickness="2" Foreground="White" Content="Создать отчёт" FontSize="20px" FontWeight="Heavy" Height="37"/>
         </StackPanel>
     </Grid>
 </Window>
