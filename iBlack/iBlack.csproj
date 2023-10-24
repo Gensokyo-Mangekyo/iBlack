@@ -62,15 +62,23 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Account.cs" />
+    <Compile Include="Classes\Computer.cs" />
+    <Compile Include="Classes\Motherboard.cs" />
     <Compile Include="EmployTable.xaml.cs">
       <DependentUpon>EmployTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Enums\FormFactor.cs" />
+    <Compile Include="Enums\Port.cs" />
     <Compile Include="Enums\Post.cs" />
+    <Compile Include="Equipment.cs" />
     <Compile Include="Password.xaml.cs">
       <DependentUpon>Password.xaml</DependentUpon>
     </Compile>
     <Compile Include="Supervisor.xaml.cs">
       <DependentUpon>Supervisor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Technic.xaml.cs">
+      <DependentUpon>Technic.xaml</DependentUpon>
     </Compile>
     <Page Include="EmployTable.xaml">
       <SubType>Designer</SubType>
@@ -93,6 +101,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Supervisor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Technic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

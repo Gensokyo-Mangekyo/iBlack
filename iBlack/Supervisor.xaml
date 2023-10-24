@@ -45,7 +45,7 @@
             <StackPanel>
                 <TextBlock Margin="0,15,0,0"  HorizontalAlignment="Center" FontSize="35px" Foreground="White" FontWeight="ExtraBold">Добро пожаловать</TextBlock>
                 <TextBlock Margin="0,15,0,0"  HorizontalAlignment="Center" FontSize="25px" Foreground="White" FontWeight="ExtraBold">DUN LunarTick</TextBlock>
-                <Grid  >
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition />
