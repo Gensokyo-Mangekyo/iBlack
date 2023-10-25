@@ -62,8 +62,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Account.cs" />
+    <Compile Include="Classes\Cabinet.cs" />
     <Compile Include="Classes\Computer.cs" />
+    <Compile Include="Classes\HardDisk.cs" />
     <Compile Include="Classes\Motherboard.cs" />
+    <Compile Include="Classes\Processor.cs" />
+    <Compile Include="Classes\RAM.cs" />
+    <Compile Include="Classes\UnitPower.cs" />
+    <Compile Include="Classes\Videocard.cs" />
+    <Compile Include="Component.cs" />
     <Compile Include="EmployTable.xaml.cs">
       <DependentUpon>EmployTable.xaml</DependentUpon>
     </Compile>

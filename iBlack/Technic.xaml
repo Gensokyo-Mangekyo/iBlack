@@ -58,13 +58,15 @@
                                 <DataGrid CanUserAddRows="False"  HorizontalGridLinesBrush="DarkGray" RowBackground="Snow"  Grid.Column="0" Grid.Row="1" Margin="0,5,0,0" x:Name="ComputersGrid" AutoGenerateColumns="False"  ItemsSource="{Binding Computers}">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn  Header="Инвентарный Номер" Binding="{Binding Path=Id}" Width="140"  />
-                                        <DataGridHyperlinkColumn Header="Наимнование" Binding="{Binding Path=Name}" Width="160" />
-                                        <DataGridHyperlinkColumn Header="Материнская плата" Binding="{Binding Path=Motherboard}" Width="160" />
-                                        <DataGridHyperlinkColumn Header="Процессор" Binding="{Binding Path=ReceiptDate}" Width="160" />
-                                        <DataGridHyperlinkColumn Header="ОЗУ" Binding="{Binding Path=ReceiptDate}" Width="160" />
-                                        <DataGridHyperlinkColumn Header="Видеокарта" Binding="{Binding Path=ReceiptDate}" Width="160" />
-                                        <DataGridHyperlinkColumn Header="Жётский диск" Binding="{Binding Path=ReceiptDate}" Width="160" />
-                                        <DataGridHyperlinkColumn Header="Блок питания" Binding="{Binding Path=ReceiptDate}" Width="160" />
+                                        <DataGridHyperlinkColumn Header="Наимнование" Binding="{Binding Path=Name}" Width="150" />
+                                        <DataGridHyperlinkColumn Header="Материнская плата" Binding="{Binding Path=Motherboard}" Width="150" />
+                                        <DataGridHyperlinkColumn Header="Процессор" Binding="{Binding Path=Processor}" Width="150" />
+                                        <DataGridHyperlinkColumn Header="ОЗУ" Binding="{Binding Path=RAM}" Width="150" />
+                                        <DataGridHyperlinkColumn Header="Видеокарта" Binding="{Binding Path=Videocard}" Width="150" />
+                                        <DataGridHyperlinkColumn Header="Жётский диск" Binding="{Binding Path=HardDisk}" Width="150" />
+                                        <DataGridHyperlinkColumn Header="Блок питания" Binding="{Binding Path=UnitPower}" Width="150" />
+                                        <DataGridHyperlinkColumn Header="Кабинет" Binding="{Binding Path=Cabinet}" Width="150" />
+
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </StackPanel>

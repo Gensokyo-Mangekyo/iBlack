@@ -23,7 +23,8 @@ namespace iBlack
     {
         public ObservableCollection<Computer> Computers = new ObservableCollection<Computer>
 {
-        new Computer(1,"Кабинет 226 Усиков",new Motherboard() { Model="Мама" })
+        new Computer(1,"Усиков",new Motherboard("MSI"),new Videocard { Model = "RTX" },new HardDisk { Model = "Samsung" },
+            new UnitPower { Model="Мощный сочный" },new RAM { Model = "HyperX" },new Processor { Model = "Intel Core I5" }, new Cabinet { Name = "Учительский" })
 };
 
         public Technic()

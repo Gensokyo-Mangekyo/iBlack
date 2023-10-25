@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace iBlack.Classes
 {
-   public class Motherboard
+   public class Motherboard : Component
     {
         public int Id { get; set; }
         public string Model { get; set; }
@@ -14,6 +14,16 @@ namespace iBlack.Classes
         public int SATAslots { get; set; }
         public int Pcislots { get; set; }
 
+
+        public Motherboard()
+        {
+
+        }
+
+        public Motherboard(string Model)
+        {
+            this.Model = Model;
+        }
 
         public override string ToString()
         {
