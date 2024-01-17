@@ -21,10 +21,12 @@ namespace iBlack
     /// </summary>
     public partial class Technic : Window
     {
+
         public ObservableCollection<Computer> Computers = new ObservableCollection<Computer>
 {
         new Computer(1,"Усиков",new Motherboard("MSI"),new Videocard { Model = "RTX" },new HardDisk { Model = "Samsung" },
             new UnitPower { Model="Мощный сочный" },new RAM { Model = "HyperX" },new Processor { Model = "Intel Core I5" }, new Cabinet { Name = "Учительский" })
+
 };
 
         public Technic()
@@ -32,6 +34,54 @@ namespace iBlack
             InitializeComponent();
             ComputersGrid.ItemsSource = Computers;
             Repository.TableCompters = Computers;
+            StackPanel stackPanel = new StackPanel();
+            for (int i = 0; i < 3; i++)
+            {
+                StackPanel stackPanel2 = new StackPanel();
+                stackPanel2.Orientation = Orientation.Horizontal;
+                TextBlock authorLabel = new TextBlock
+                {
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    FontSize = 25,
+                    Foreground = Brushes.Black,
+                    FontWeight = FontWeights.ExtraBold,
+                    Text = "Автор"
+                };
+                TextBlock authorName = new TextBlock
+                {
+                    Margin = new Thickness(10, 3, 10, 0),
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    FontSize = 22,
+                    FontWeight = FontWeights.Bold,
+                    Foreground = Brushes.Black,
+                    Name = "Author",
+                    Text = "Андрей"
+                };
+                TextBlock themeLabel = new TextBlock
+                {
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    FontSize = 25,
+                    Foreground = Brushes.Black,
+                    FontWeight = FontWeights.ExtraBold,
+                    Text = "Тема отчёта"
+                };
+                TextBlock themeText = new TextBlock
+                {
+                    Margin = new Thickness(10, 3, 10, 0),
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    FontSize = 22,
+                    FontWeight = FontWeights.Bold,
+                    Foreground = Brushes.Black,
+                    Text = "АААА"
+                };
+                stackPanel2.Children.Add(authorLabel);
+                stackPanel2.Children.Add(authorName);
+                stackPanel2.Children.Add(themeLabel);
+                stackPanel2.Children.Add(themeText);
+                ListBoxItem listBoxItem = new ListBoxItem();
+                listBoxItem.Content = stackPanel2;
+                Lstbox.Items.Add(listBoxItem);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -42,12 +92,32 @@ namespace iBlack
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             var TableData = new TableData();
-            TableData.Show();
+            TableData.ShowDialog();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            if (Lstbox.SelectedItem == null)
+                return;
+           var Item = Lstbox.SelectedItem as ListBoxItem;
+           var StackPanel = Item.Content as StackPanel;
+            foreach (var item in StackPanel.Children)
+            {
+                if (item is TextBlock textBlock)
+                {
+                    if (textBlock.Name == "Author")
+                    {
+                        var Otchet = new Otchet(textBlock.Text);
+                        Otchet.ShowDialog();
+                        break;
+                    }
+                }
+            }
         }
     }
 }

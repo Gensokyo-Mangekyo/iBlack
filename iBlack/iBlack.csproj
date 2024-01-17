@@ -78,6 +78,9 @@
     <Compile Include="Enums\Port.cs" />
     <Compile Include="Enums\Post.cs" />
     <Compile Include="Equipment.cs" />
+    <Compile Include="Otchet.xaml.cs">
+      <DependentUpon>Otchet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Password.xaml.cs">
       <DependentUpon>Password.xaml</DependentUpon>
     </Compile>
@@ -107,6 +110,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Otchet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Password.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
