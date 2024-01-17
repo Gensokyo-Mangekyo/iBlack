@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:iBlack"
         mc:Ignorable="d"
-         Title="Supervisor" Height="720" Width="1280" WindowStyle="None" WindowStartupLocation="CenterScreen"  Background="Transparent"  AllowsTransparency="True">
+         Title="Supervisor" Height="720" Width="1280" WindowStyle="None" BorderBrush="White" BorderThickness="1.5"  WindowStartupLocation="CenterScreen"  Background="Transparent"  AllowsTransparency="True">
     <StackPanel>
         <StackPanel.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,2" >
@@ -16,7 +16,7 @@
         <StackPanel Orientation="Horizontal">
             <Image Grid.Column="1" Grid.Row="1" Width="15px" HorizontalAlignment="Left"  Source="yinyang.png" Height="15px"></Image>
             <TextBlock HorizontalAlignment="Left" Grid.Row="1" Margin="1,3,0,0" FontStyle="Italic" FontWeight="Bold" Foreground="White">Iblack</TextBlock>
-            <Button Click="Button_Click" Margin="1220,0" Background="Transparent" BorderBrush="Transparent" Foreground="Red" FontWeight="ExtraBold" FontSize="15px"
+            <Button Click="Button_Click" Margin="1215,0" Background="Transparent" BorderBrush="Transparent" Foreground="Red" FontWeight="ExtraBold" FontSize="15px"
                 Content="X">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
@@ -55,7 +55,7 @@
                         <TabItem.Content>
                             <StackPanel>
                                 <TextBlock Grid.Column="0" Margin="0,15,0,0"  HorizontalAlignment="Center" FontSize="35px" Foreground="White" FontWeight="ExtraBold">Компьютеры</TextBlock>
-                                <DataGrid CanUserAddRows="False"  HorizontalGridLinesBrush="DarkGray" RowBackground="Snow"  Grid.Column="0" Grid.Row="1" Margin="0,5,0,0" x:Name="ComputersGrid" AutoGenerateColumns="False"  ItemsSource="{Binding Computers}">
+                                <DataGrid Height="408" CanUserAddRows="False"  HorizontalGridLinesBrush="DarkGray" RowBackground="Snow"  Grid.Column="0" Grid.Row="1" Margin="0,5,0,0" x:Name="ComputersGrid" AutoGenerateColumns="False"  ItemsSource="{Binding Computers}">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn  Header="Инвентарный Номер" Binding="{Binding Path=Id}" Width="140"  />
                                         <DataGridHyperlinkColumn Header="Наимнование" Binding="{Binding Path=Name}" Width="150" />
@@ -66,9 +66,9 @@
                                         <DataGridHyperlinkColumn Header="Жётский диск" Binding="{Binding Path=HardDisk}" Width="150" />
                                         <DataGridHyperlinkColumn Header="Блок питания" Binding="{Binding Path=UnitPower}" Width="150" />
                                         <DataGridHyperlinkColumn Header="Кабинет" Binding="{Binding Path=Cabinet}" Width="150" />
-
                                     </DataGrid.Columns>
                                 </DataGrid>
+                                <Button Background="Black"  BorderBrush="White" BorderThickness="2" Click="Button_Click_1"  Foreground="White" Margin="548,25,566,0" Content="Добавить" FontSize="20px" FontWeight="Heavy" Height="39"/>
                             </StackPanel>
                         </TabItem.Content>
                     </TabItem>
@@ -76,25 +76,33 @@
                         <TabItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Ellipse Height="10" Width="10" Fill="Black" />
-                                <TextBlock Margin="3">Оборудывание</TextBlock>
+                                <TextBlock Margin="3">Создать отчёт</TextBlock>
                             </StackPanel>
                         </TabItem.Header>
                         <TabItem.Content>
                             <StackPanel>
-                                <TextBlock Grid.Column="0" Margin="0,15,0,0"  HorizontalAlignment="Center" FontSize="35px" Foreground="White" FontWeight="ExtraBold">Оборудывание</TextBlock>
-                                <DataGrid CanUserAddRows="False"  HorizontalGridLinesBrush="DarkGray" RowBackground="Snow" Margin="370,0,408,0" x:Name="GridEquipment" AutoGenerateColumns="False"  ItemsSource="{Binding accounts}">
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn  Header="Инвентарный Номер" Binding="{Binding Name}" Width="140"  />
-                                        <DataGridHyperlinkColumn Header="Модель" Binding="{Binding Family}" Width="160" />
-                                        <DataGridHyperlinkColumn Header="Порт" Binding="{Binding Family}" Width="160" />
-                                    </DataGrid.Columns>
-                                </DataGrid>
+                                <TextBlock Grid.Column="0" Margin="0,15,0,0"  HorizontalAlignment="Center" FontSize="35px" Foreground="White" FontWeight="ExtraBold">Создание отчёта</TextBlock>
+                                <StackPanel HorizontalAlignment="Center" Margin="0,10"  Orientation="Horizontal">
+                                    <TextBlock Grid.Column="0" Margin="15,0"  HorizontalAlignment="Center" FontSize="25px" Foreground="White" FontWeight="ExtraBold">Название темы</TextBlock>
+                                    <TextBox  Height="24" Width="200"  ></TextBox>
+                                </StackPanel>
+                                <TextBox Height="378" Margin="54,0"/>
+                                <Button Background="Black" BorderBrush="White" BorderThickness="2" Click="Button_Click_1"  Foreground="White" Margin="548,10,566,0" Content="Создать" FontSize="20px" FontWeight="Heavy" Height="39"/>
                             </StackPanel>
+
                         </TabItem.Content>
+                    </TabItem>
+                    <TabItem Margin="6,-6,-4,7">
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Ellipse Height="10" Width="10" Fill="Black" />
+                                <TextBlock Margin="3">Смотреть отчёты</TextBlock>
+                            </StackPanel>
+                        </TabItem.Header>
                     </TabItem>
                 </TabControl>
             </StackPanel>
         </Grid>
-        
+
     </StackPanel>
 </Window>

@@ -81,8 +81,12 @@
     <Compile Include="Password.xaml.cs">
       <DependentUpon>Password.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Repository.cs" />
     <Compile Include="Supervisor.xaml.cs">
       <DependentUpon>Supervisor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TableData.xaml.cs">
+      <DependentUpon>TableData.xaml</DependentUpon>
     </Compile>
     <Compile Include="Technic.xaml.cs">
       <DependentUpon>Technic.xaml</DependentUpon>
@@ -108,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Supervisor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TableData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

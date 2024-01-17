@@ -31,11 +31,23 @@ namespace iBlack
         {
             InitializeComponent();
             ComputersGrid.ItemsSource = Computers;
+            Repository.TableCompters = Computers;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var TableData = new TableData();
+            TableData.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
