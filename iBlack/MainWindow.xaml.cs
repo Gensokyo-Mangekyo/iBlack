@@ -32,9 +32,27 @@ namespace iBlack
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var SuperVisor = new Technic();
-            SuperVisor.Show();
-            Close();
+            if (string.IsNullOrWhiteSpace(Login.Text) || Login.Text == "" || string.IsNullOrWhiteSpace(Login.Text) || Login.Text == "")
+            {
+                MessageBox.Show("Заполните все поля для входа!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            string TitleJob = Repository.DB.CheckEmployee(Login.Text, Password.Password);
+            if (!string.IsNullOrEmpty(TitleJob))
+            {
+                if (TitleJob == "Инженер" || TitleJob == "Главный Инженер")
+                {
+                    var technic = new Technic();
+                    technic.Show();
+                }
+                else
+                {
+                    var supervisor = new Supervisor();
+                    supervisor.Show();
+                }
+                Close();
+            }
+            else MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

@@ -11,5 +11,6 @@ namespace iBlack
   public static class Repository
     {
         public static ObservableCollection<Computer> TableCompters;
+        public static DB DB;
     }
 }
