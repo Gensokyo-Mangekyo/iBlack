@@ -43,7 +43,7 @@
 
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="0,15,0,0"  HorizontalAlignment="Center" FontSize="35px" Foreground="White" FontWeight="ExtraBold">Добро пожаловать</TextBlock>
-                <TextBlock Margin="0,15,0,0"  HorizontalAlignment="Center" FontSize="25px" Foreground="White" FontWeight="ExtraBold">DUN LunarTick</TextBlock>
+                <TextBlock x:Name="Welcome" Margin="0,15,0,0"  HorizontalAlignment="Center" FontSize="25px" Foreground="White" FontWeight="ExtraBold"></TextBlock>
                 <TabControl Background="Transparent" BorderThickness="0">
                     <TabItem Margin="0,-6,-4,7">
                         <TabItem.Header>

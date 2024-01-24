@@ -37,12 +37,17 @@ namespace iBlack
                 MessageBox.Show("Заполните все поля для входа!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            string TitleJob = Repository.DB.CheckEmployee(Login.Text, Password.Password);
-            if (!string.IsNullOrEmpty(TitleJob))
+            string EmployeInfo = Repository.DB.CheckEmployee(Login.Text, Password.Password);
+            if (EmployeInfo == null)
             {
-                if (TitleJob == "Инженер" || TitleJob == "Главный Инженер")
+                MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            string[] ArrayEmployeeInfo = EmployeInfo.Split('.');
+     
+                if (ArrayEmployeeInfo[3] == "Инженер" || ArrayEmployeeInfo[3] == "Главный Инженер")
                 {
-                    var technic = new Technic();
+                    var technic = new Technic(ArrayEmployeeInfo[1] + " " + ArrayEmployeeInfo[2], ArrayEmployeeInfo[3]);
                     technic.Show();
                 }
                 else
@@ -51,8 +56,6 @@ namespace iBlack
                     supervisor.Show();
                 }
                 Close();
-            }
-            else MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

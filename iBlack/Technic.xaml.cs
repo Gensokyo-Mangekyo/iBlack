@@ -22,16 +22,13 @@ namespace iBlack
     public partial class Technic : Window
     {
 
-        public ObservableCollection<Computer> Computers = new ObservableCollection<Computer>
-{
-        new Computer(1,"Усиков",new Motherboard("MSI"),new Videocard { Model = "RTX" },new HardDisk { Model = "Samsung" },
-            new UnitPower { Model="Мощный сочный" },new RAM { Model = "HyperX" },new Processor { Model = "Intel Core I5" }, new Cabinet { Name = "Учительский" })
+        public ObservableCollection<Computer> Computers = null;
 
-};
-
-        public Technic()
+        public Technic(string User,string Role)
         {
             InitializeComponent();
+            Computers = Repository.DB.GetComputers();
+            Welcome.Text = User;
             ComputersGrid.ItemsSource = Computers;
             Repository.TableCompters = Computers;
             StackPanel stackPanel = new StackPanel();
