@@ -190,6 +190,7 @@
     <Compile Include="Classes\Computer.cs" />
     <Compile Include="Classes\HardDisk.cs" />
     <Compile Include="Classes\Motherboard.cs" />
+    <Compile Include="Classes\Otchet.cs" />
     <Compile Include="Classes\Processor.cs" />
     <Compile Include="Classes\RAM.cs" />
     <Compile Include="Classes\UnitPower.cs" />

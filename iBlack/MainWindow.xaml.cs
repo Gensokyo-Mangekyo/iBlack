@@ -45,9 +45,9 @@ namespace iBlack
             }
             string[] ArrayEmployeeInfo = EmployeInfo.Split('.');
      
-                if (ArrayEmployeeInfo[3] == "Инженер" || ArrayEmployeeInfo[3] == "Главный Инженер")
+                if (ArrayEmployeeInfo[3].ToLower() == "инженер" || ArrayEmployeeInfo[3].ToLower() == "главный инженер")
                 {
-                    var technic = new Technic(ArrayEmployeeInfo[1] + " " + ArrayEmployeeInfo[2], ArrayEmployeeInfo[3]);
+                    var technic = new Technic(ArrayEmployeeInfo[1] + " " + ArrayEmployeeInfo[2], ArrayEmployeeInfo[3].ToLower());
                     technic.Show();
                 }
                 else

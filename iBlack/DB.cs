@@ -32,6 +32,27 @@ namespace iBlack
             Repository.DB = this;
         }
 
+        public void AddComputer(Computer computer)
+        {
+            var Parameters = new MySqlParameter[8] {
+          new MySqlParameter("@name", computer.Name),
+            new MySqlParameter("@processor", computer.Processor),
+            new MySqlParameter("@motherboard", computer.Motherboard),
+             new MySqlParameter("@ram", computer.RAM),
+             new MySqlParameter("@unit", computer.UnitPower),
+              new MySqlParameter("@disk", computer.HardDisk),
+              new MySqlParameter("@videocard", computer.Videocard),
+              new MySqlParameter("@cabinet", computer.Cabinet)
+            };
+
+            MySqlCommand command = new MySqlCommand($"INSERT INTO `data`(`Motherboard`, `Processor`, `RAM`, `Videocard`, `Disk`, `PowerBlock`, `Cabinet`, `Name`) VALUES (@motherboard,@processor,@ram,@videocard,@disk,@unit,@cabinet,@name)", Connection);
+            foreach (var item in Parameters)
+            {
+                command.Parameters.Add(item);
+            }
+            int number = command.ExecuteNonQuery();
+        }
+
         public string CheckEmployee(string Login,string Password)
         {
             if (Connection.State == System.Data.ConnectionState.Closed)
@@ -68,6 +89,36 @@ namespace iBlack
                 }
             }
                 return Computers;
-        } 
+        }
+
+        public List<Classes.Otchet> GetOtchets()
+        {
+            var Otchets = new List<Classes.Otchet>();
+            MySqlCommand command = new MySqlCommand("SELECT * FROM  report", Connection);
+            using (MySqlDataReader reader = command.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string Name = (string)reader.GetValue(1);
+                        string Description = (string)reader.GetValue(2);
+                        string Author = "Неизвестный";
+                        MySqlCommand command2 = new MySqlCommand($"SELECT * FROM employee WHERE id = {(int)reader.GetValue(3)}", Connection);
+                        using (MySqlDataReader reader2 = command2.ExecuteReader())
+                        {
+                            if (reader2.HasRows)
+                            {
+                                reader2.Read();
+                                Author = reader2.GetValue(1) + " " + reader2.GetValue(2);
+                            }
+                        }
+                        Otchets.Add(new Classes.Otchet(Author,Description,Name));
+                    }
+                }
+            }
+                return Otchets;
+        }
+
     }
 }

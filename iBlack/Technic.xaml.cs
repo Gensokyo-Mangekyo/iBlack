@@ -31,7 +31,24 @@ namespace iBlack
             Welcome.Text = User;
             ComputersGrid.ItemsSource = Computers;
             Repository.TableCompters = Computers;
+            if (Role != "главный инженер")
+                ShowOtchet.Visibility = Visibility.Hidden;
             StackPanel stackPanel = new StackPanel();
+
+            string[] Users = new string[3]
+            {
+                "Влад Тестовый",
+                "Андрей Мирошниченко",
+                "Максим Кузьмин"
+            };
+
+            string[] Theme = new string[3]
+            {
+                "Не работал монитор",
+                "Word не открывался",
+                "1C требовал лицензию"
+            };
+
             for (int i = 0; i < 3; i++)
             {
                 StackPanel stackPanel2 = new StackPanel();
@@ -52,7 +69,7 @@ namespace iBlack
                     FontWeight = FontWeights.Bold,
                     Foreground = Brushes.Black,
                     Name = "Author",
-                    Text = "Андрей"
+                    Text = Users[i]
                 };
                 TextBlock themeLabel = new TextBlock
                 {
@@ -69,7 +86,7 @@ namespace iBlack
                     FontSize = 22,
                     FontWeight = FontWeights.Bold,
                     Foreground = Brushes.Black,
-                    Text = "АААА"
+                    Text = Theme[i]
                 };
                 stackPanel2.Children.Add(authorLabel);
                 stackPanel2.Children.Add(authorName);

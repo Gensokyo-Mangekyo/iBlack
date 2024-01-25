@@ -92,7 +92,7 @@
 
                         </TabItem.Content>
                     </TabItem>
-                    <TabItem Margin="6,-6,-4,7">
+                    <TabItem Name="ShowOtchet" Margin="6,-6,-4,7">
                         <TabItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Ellipse Height="10" Width="10" Fill="Black" />

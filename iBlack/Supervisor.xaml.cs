@@ -23,9 +23,9 @@ namespace iBlack
     {
       public  ObservableCollection<Account> accounts = new ObservableCollection<Account>
 {
-    new Account(1,"Егор","Дуранов",Enums.Post.Engineer, DateTime.Parse("1 августа 2023г")),
+    new Account(1,"Андрей","Мирошниченко",Enums.Post.Engineer, DateTime.Parse("1 августа 2023г")),
     new Account(2,"Михаил","Усиков",Enums.Post.Supervisor,DateTime.Parse("6 июля 2021г")) ,
-    new Account(3,"Максим","Кружевников",Enums.Post.Technic,DateTime.Parse("5 августа 2022г")) ,
+    new Account(3,"Влад","Тестовый",Enums.Post.Technic,DateTime.Parse("5 августа 2022г")) ,
 };
         private ObservableCollection<Account> EmployesTable = new ObservableCollection<Account>();
 

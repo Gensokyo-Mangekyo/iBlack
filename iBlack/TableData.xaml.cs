@@ -32,8 +32,9 @@ namespace iBlack
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Repository.TableCompters.Add(new Computer(1,Name.Text, new Motherboard(Motherboard.Text), new Videocard { Model = Videocard.Text }, new HardDisk { Model = Disk.Text },
+            Repository.DB.AddComputer(new Computer(null, Name.Text, new Motherboard(Motherboard.Text), new Videocard { Model = Videocard.Text }, new HardDisk { Model = Disk.Text },
             new UnitPower { Model = Power.Text }, new RAM { Model = RAM.Text}, new Processor { Model = Processor.Text }, new Cabinet { Name = Cabinet.Text }));
+            Repository.TableCompters = Repository.DB.GetComputers();
             Close();
         }
     }
